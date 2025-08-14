@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/home.css') }} ">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resp.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/plannit-logo.ico') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Plannit</title>
+</head>
+<body>
+    <div class="main">
+        <div class="side-bar">
+            <a href="" class="nav-btn active">
+                <img src="{{ url_for('static', filename='assets/icons/home-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href=" {{ url_for('update.update') }} " class="nav-btn">
+                <img src="{{ url_for('static', filename='assets/icons/update-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href="{{ url_for('view.view') }}" class="nav-btn">
+                <img src="{{ url_for('static', filename='assets/icons/view-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href="{{ url_for('delete.delete') }}" class="nav-btn">
+                <img src="{{ url_for('static', filename='assets/icons/delete-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href="{{ url_for('logout.logout') }}" class="nav-btn" id="logout-btn">
+                <img src="{{ url_for('static', filename='assets/icons/exit-icon.png') }}" alt="" class="nav-icon">
+            </a>
+        </div>
+        <div class="side-drawer close">
+        
+            <ul id="slide-out" class="sidenav">
+                <li><a href="{{ url_for('home.home') }}">
+                        <img src="{{ url_for('static', filename='assets/icons/home-icon.png') }}" alt="" class="side-icon">
+                        Home
+                    </a></li>
+                <li><a href="{{ url_for('update.update') }}">
+                        <img src="{{ url_for('static', filename='assets/icons/update-icon.png') }}" alt="" class="side-icon">
+                        Update
+                    </a></li>
+                <li><a href="{{ url_for('view.view') }}">
+                        <img src="{{ url_for('static', filename='assets/icons/view-icon.png') }}" alt="" class="side-icon">
+                        View
+                    </a></li>
+                <li><a href="{{ url_for('delete.delete') }}">
+                        <img src="{{ url_for('static', filename='assets/icons/delete-icon.png') }}" alt="" class="side-icon">
+                        Delete
+                    </a></li>
+                <li><a href="{{ url_for('logout.logout') }}" id="drawer-logout-btn">
+                        <img src="{{ url_for('static', filename='assets/icons/exit-icon.png') }}" alt="" class="side-icon">
+                        Logout
+                    </a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <a href="#" data-target="slide-out" id="menu-btn">
+                <img src="{{ url_for('static', filename='assets/icons/menu-icon.png')}}" alt="">
+            </a>
+            <div class="upper-section">
+                <img src=" {{ url_for('static', filename='assets/images/avatar.png') }} " id="avatar" alt="">
+                <h3 id="user-heading">Hey {{ name }}</h3>
+            </div>
+            <div class="date-section">
+                <div class="date-sec">
+                    <span class="date-sec-span">Date:</span>
+                    <span class="date-sec-span" id="date">{{ date }}</span>
+                </div>
+                <div class="day-sec">
+                    <span class="date-sec-span">Day:</span>
+                    <span class="date-sec-span" id="day">{{ day }}</span>
+                </div>
+            </div>
+            <div class="table-container table-container-">
+                <h2 id="schedule-heading">Today's Schedule</h2>
+                <div class="table-section" id="table-sec">
+                    {% if records == [] %}
+                        <p id="no-schedule-text">No schedule available</p>
+                    {% else %}
+                        <table class="table">
+                            <thead class="table-head">
+                                <tr>
+                                    <th>Start time</th>
+                                    <th>End time</th>
+                                    <th>Task</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                            {% for record in records %}
+                                <tr>
+                                    <td data-label="Start time: ">{{ record[0] }}</td>
+                                    <td data-label="End time: ">{{ record[1] }}</td>
+                                    <td data-label="Task: ">{{ record[2] }}</td>
+                                </tr>          
+                            {% endfor %}                      
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoutBtn = document.querySelector("#logout-btn");
+            const drawerLogoutBtn = document.querySelector("#drawer-logout-btn");
+            const drawer = document.querySelector(".side-drawer")
+            const menuBtn = document.querySelector("#menu-btn");
+            const content = document.querySelector(".content");
+
+            menuBtn.addEventListener("click", function (event) {
+                event.stopPropagation();
+                if (drawer.classList[1] == "close") {
+
+                    drawer.classList.remove("close");
+                    drawer.classList.add("open");
+                }
+                else if (drawer.classList[1] == "open") {
+                    drawer.classList.remove("open");
+                    drawer.classList.add("close");
+                }
+            });
+
+            content.addEventListener("click", function (event) {
+                event.stopPropagation();
+                drawer.classList.remove("open");
+                drawer.classList.add("close");
+            });
+
+            logoutBtn.addEventListener("click", logOut);
+            drawerLogoutBtn.addEventListener("click", logOut);
+
+            function logOut(event) {
+                event.preventDefault();
+                const logoutUrl = this.href;
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You will be logged out of your account.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33', // red for destructive
+                    cancelButtonColor: '#6c757d', // gray for cancel
+                    confirmButtonText: 'End Session',
+                    cancelButtonText: "Stay Logged In"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = logoutUrl;
+                    }
+                });
+            }
+
+            const messages = {{ get_flashed_messages() | tojson }};
+            if (messages.length > 0) {
+                const firstMessage = messages[0];
+                const notyf = new Notyf();
+                notyf.success(firstMessage);
+            }    
+        });
+    </script>
+</body>
+</html>

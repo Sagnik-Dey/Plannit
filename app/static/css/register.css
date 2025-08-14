@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --primary-color: #9ECAD6;
+    --secondary-color: #314662;
+    --tertiary-color: #F5CBCB
+}
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    background-color: var(--primary-color);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div.container {
+    padding: 60px;
+    box-shadow: 16px 16px 9.4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    background-color: #88B1BC;
+    width: 55%;
+    margin-bottom: 60px;
+}
+div.input-grp {
+    margin: 30px;
+}
+input.input {
+    width: 90%;
+    margin-left: 10px;
+    border: none;
+    color: var(--secondary-color);
+    background-color: transparent;
+    font-size: 16px;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: none;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+img.icons {
+    width: 20px;
+}
+div.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 7px;
+}
+button.btn {
+    display: block;
+    text-decoration: none;
+    padding: 12px 30px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 11px;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+div.btn-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+label.label {
+    font-size: 18px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-right: 10px;
+}
+input.input::placeholder {
+    color: rgba(49, 70, 98, 0.55);
+}
+
+h1#heading {
+    color: var(--secondary-color);
+    font-weight: 700;
+    text-align: center;
+    margin: 50px;
+}
+button#register-btn {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    width: 50%;
+    transition: 0.3s ease-in-out;
+}
+button#login-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}

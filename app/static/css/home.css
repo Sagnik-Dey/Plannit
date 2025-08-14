@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --primary-color: #9ECAD6;
+    --secondary-color: #314662;
+    --tertiary-color: #F5CBCB
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    background-color: var(--primary-color);
+    overflow: hidden;
+}
+div.main {
+    display: flex;
+    flex-direction: row;
+}
+div.side-bar {
+    width: 80px;
+    max-width: 80px;
+    min-width: 80px;
+    height: 100vh;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+div.day-sec, div.date-sec {
+    display: inline-block;
+}
+div.upper-section {
+    margin: 30px 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+div.content {
+    width: 100%;
+}
+div.date-section {
+    margin: 40px;
+    margin-left: 60px;
+}
+span.date-sec-span {
+    font-size: 20px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-right: 5px;
+}
+div.table-container {
+    margin: 60px;
+    margin-top: 100px;
+}
+div.table-section {
+    margin-top: 30px;
+    max-height: calc(100vh - 350px);
+    overflow-y: auto;
+}
+table.table {
+    width: 100%;
+    font-family: 'Montserrat Alternates', sans-serif;
+    border-radius: 12px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+thead.table-head {
+    background-color: var(--secondary-color);
+    padding: 10px;
+    color: var(--primary-color);
+}
+thead.table-head th {
+  padding: 12px;
+  text-align: center;
+}
+thead.table-head th:first-child {
+  border-top-left-radius: 12px;
+}
+thead.table-head th:last-child {
+  border-top-right-radius: 12px;
+}
+tbody.table-body {
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+tbody.table-body td {
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+tbody.table-body tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+tbody.table-body tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+th, td {
+    border-right: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+th:first-child, td:first-child {
+    border-left: 1px solid var(--secondary-color);
+}   
+a.nav-btn {
+    text-decoration: none;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+a.active {
+    border-left: 4px solid var(--tertiary-color);
+    border-right: 4px solid transparent;
+    width: calc(100% - 8px);
+}
+img.nav-icon {
+    width: 24px;
+}
+
+a#menu-btn {
+    margin-left: 60px;
+    margin-top: 40px;
+}
+img#avatar {
+    width: 46px;
+}
+span#date, span#day {
+    margin-right: 50px;
+}
+h3#user-heading {
+    font-size: 24px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin: 0;
+}
+h2#schedule-heading {
+    font-size: 30px;
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin: 0;
+}
+p#no-schedule-text {
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: 500;
+}
+::-webkit-scrollbar {
+  width: 7px; /* Vertical scrollbar width */
+  height: 100%; 
+  background-color: transparent;
+  margin-left: 10px;
+}
+/* Scrollbar track (empty space) */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 5px;
+}
+
+/* Scrollbar thumb (the draggable handle) */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 5px;
+}
+
+/* Thumb hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tertiary-color);
+  cursor: default;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resp.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/plannit-logo.ico') }}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Plannit</title>
+</head>
+<body>
+    <div class="main">
+        <div class="side-bar">
+            <a href="{{ url_for('home.home') }}" class="nav-btn">
+                <img src="{{ url_for('static', filename='assets/icons/home-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href="{{ url_for('update.update') }}" class="nav-btn">
+                <img src="{{ url_for('static', filename='assets/icons/update-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href="" class="nav-btn active">
+                <img src="{{ url_for('static', filename='assets/icons/view-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href="{{ url_for('delete.delete') }}" class="nav-btn">
+                <img src="{{ url_for('static', filename='assets/icons/delete-icon.png') }}" alt="" class="nav-icon">
+            </a>
+            <a href="{{ url_for('logout.logout') }}" class="nav-btn" id="logout-btn">
+                <img src="{{ url_for('static', filename='assets/icons/exit-icon.png') }}" alt="" class="nav-icon">
+            </a>
+        </div>
+        <div class="side-drawer close">
+            
+            <ul id="slide-out" class="sidenav">
+                <li><a href="{{ url_for('home.home') }}">
+                    <img src="{{ url_for('static', filename='assets/icons/home-icon.png') }}" alt="" class="side-icon">
+                    Home
+                </a></li>
+                <li><a href="{{ url_for('update.update') }}">
+                    <img src="{{ url_for('static', filename='assets/icons/update-icon.png') }}" alt="" class="side-icon">
+                    Update
+                </a></li>
+                <li><a href="{{ url_for('view.view') }}">
+                    <img src="{{ url_for('static', filename='assets/icons/view-icon.png') }}" alt="" class="side-icon">
+                    View
+                </a></li>
+                <li><a href="{{ url_for('delete.delete') }}">
+                    <img src="{{ url_for('static', filename='assets/icons/delete-icon.png') }}" alt="" class="side-icon">
+                    Delete
+                </a></li>
+                <li><a href="{{ url_for('logout.logout') }}" id="drawer-logout-btn">
+                    <img src="{{ url_for('static', filename='assets/icons/exit-icon.png') }}" alt="" class="side-icon">
+                    Logout
+                </a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <a href="#" data-target="slide-out"  id="menu-btn">
+                <img src="{{ url_for('static', filename='assets/icons/menu-icon.png')}}" alt="">
+            </a>
+            <div class="heading-sec">
+                <h3 id="heading">View</h3>
+            </div>
+            <div class="form-sec">
+                <form action="" method="POST">
+                    <div class="day-sec form-div">
+                        <label for="day-chooser" class="label">Choose Day: </label>
+                        <select name="day-chooser" id="day-chooser" class="input" required>
+                            {% if day == None%}
+                                <option value="Monday" selected>Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            {% else %}
+                                <option value="Monday" {% if day=="Monday" %}selected{% endif %}>Monday</option>
+                                <option value="Tuesday" {% if day=="Tuesday" %}selected{% endif %}>Tuesday</option>
+                                <option value="Wednesday" {% if day=="Wednesday" %}selected{% endif %}>Wednesday</option>
+                                <option value="Thursday" {% if day=="Thursday" %}selected{% endif %}>Thursday</option>
+                                <option value="Friday" {% if day=="Friday" %}selected{% endif %}>Friday</option>
+                                <option value="Saturday" {% if day=="Saturday" %}selected{% endif %}>Saturday</option>
+                                <option value="Sunday" {% if day=="Sunday" %}selected{% endif %}>Sunday</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="btn-section">
+                        <button type="submit" id="view-btn">Choose Day</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container">
+                <div class="table-section">
+                    {% if records == None %}
+                        <p></p>
+                    {% elif records == [] %}
+                        {% if day == "Monday" %}
+                            <p id="msg">Monday’s looking pretty clear — off to a smooth start.</p>
+                        {% elif day == "Tuesday" %}
+                            <p id="msg">No tasks today — nice and easy Tuesday.</p>
+                        {% elif day == "Wednesday" %}
+                            <p id="msg">Midweek with no tasks — that’s something.</p>
+                        {% elif day == "Thursday" %}
+                            <p id="msg">Thursday’s free — almost the weekend.</p>
+                        {% elif day == "Friday" %}
+                            <p id="msg">No tasks on Friday — time to relax soon.</p>
+                        {% elif day == "Saturday" %}
+                            <p id="msg">Nothing on Saturday — enjoy the break.</p>
+                        {% elif day == "Sunday" %}
+                            <p id="msg">Sunday’s quiet — perfect for recharging.</p>
+                        {% endif %}
+                    {% else %}
+                        <table class="table">
+                            <thead class="table-head">
+                                <tr>
+                                    <th>Start time</th>
+                                    <th>End time</th>
+                                    <th>Task</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                
+                                {% for record in records%}
+                                    <tr>
+                                        <td data-label="Start time:">{{ record[0] }}</td>
+                                        <td data-label="End time:">{{ record[1] }}</td>
+                                        <td data-label="Task:">{{ record[2] }}</td>
+                                    </tr>
+                                {% endfor %}                            
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                const drawer = document.querySelector(".side-drawer")
+                const logoutBtn = document.querySelector("#logout-btn");
+                const drawerLogoutBtn = document.querySelector("#drawer-logout-btn");
+                const menuBtn = document.querySelector("#menu-btn");
+                const content = document.querySelector(".content");
+
+                menuBtn.addEventListener("click", function(event) {
+                    event.stopPropagation();
+                    if (drawer.classList[1] == "close") {
+                    
+                        drawer.classList.remove("close");
+                        drawer.classList.add("open");
+                    }
+                    else if (drawer.classList[1] == "open") {
+                        drawer.classList.remove("open");
+                        drawer.classList.add("close");
+                    }
+                });
+
+                content.addEventListener("click", function(event) {
+                    event.stopPropagation();
+                    drawer.classList.remove("open");
+                    drawer.classList.add("close");
+                });
+
+                logoutBtn.addEventListener("click", logOut);
+                drawerLogoutBtn.addEventListener("click", logOut);
+
+                function logOut(event) {
+                    event.preventDefault();
+                    const logoutUrl = this.href;
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You will be logged out of your account.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33', // red for destructive
+                        cancelButtonColor: '#6c757d', // gray for cancel
+                        confirmButtonText: 'End Session',
+                        cancelButtonText: "Stay Logged In"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = logoutUrl;
+                        }
+                    });
+                }
+            });
+            
+    </script>
+</body>
+</html>

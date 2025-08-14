@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/plannit-logo.ico') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
+    
+    <title>Plannit</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="heading">Plannit</h1>
+        <h3 id="sub-heading">Plan today, achieve tomorrow.</h3>
+        <div class="buttons">
+            <a href="{{ url_for('register.register') }}" id="register-btn" class="btn">Create Account</a>
+            <a href="{{ url_for('login.login') }}" id="login-btn" class="btn">Login</a>
+        </div>
+    </div>
+        
+    <img id="display-img" src="{{ url_for('static', filename='assets/images/illustration.png') }}" alt="">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const messages = {{ get_flashed_messages() | tojson }};
+            if (messages.length > 0) {
+                const firstMessage = messages[0];
+                const notyf = new Notyf();
+                notyf.success(firstMessage);
+            }    
+        });
+    </script>
+</body>
+</html>

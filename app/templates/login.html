@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resp.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/plannit-logo.ico') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
+
+    <title>Plannit</title>
+</head>
+<body>
+    <h1 id="heading">Login</h1>
+    <div class="container">
+        <form action="{{ url_for('login.login') }}" method="POST">
+            <div class="input-grp">
+                <label for="username" class="label">Username</label>
+                <div class="input-container">
+                    <img src="{{ url_for('static', filename='assets/icons/user-icon.png') }}" class="icons" alt="">
+                    <input type="text" id="username" name="username" class="input login-inp" placeholder="Enter your username" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="input-grp">
+                <label for="password" class="label">Password</label>
+                <div class="input-container">
+                    <img src="{{ url_for('static', filename='assets/icons/password-icon.png') }}" class="icons" alt="">
+                    <input type="password" id="password" name="password" class="input login-inp" placeholder="Enter your password" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="btn-section">
+                <button type="submit" class="btn" id="login-btn">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = {{ get_flashed_messages() | tojson }};
+            if (messages.length > 0) {
+                const firstMessage = messages[0];
+                const notyf = new Notyf();
+                notyf.error(firstMessage);
+            }
+        });
+        
+    </script>
+</body>
+</html>

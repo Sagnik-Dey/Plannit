@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+  --primary-color: #9ecad6;
+  --secondary-color: #314662;
+  --tertiary-color: #f5cbcb;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+  background-color: var(--primary-color);
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  /* Hides the table header on small screens */
+  table {
+    overflow-x: auto;
+  }
+
+  .table-head {
+    display: none;
+  }
+
+  .table-body {
+    overflow-x: hidden;
+  }
+
+  /* Makes table rows and cells behave as blocks, allowing them to stack */
+  .table,
+  .table-body,
+  .table-body tr,
+  .table-body td {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Adds a card-like appearance to each row on small screens */
+  .table-body tr {
+    margin-bottom: 20px;
+    /* border: 1px solid var(--secondary-color); */
+  }
+
+  /* Styles the table cells for the stacked layout */
+  .table-body td {
+    display: block;
+    border: none;
+    border-radius: 0 !important;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+    padding: 10px;
+    overflow-wrap: break-word; /* modern way */
+  /* max-width: 100%;           */
+  box-sizing: border-box;  
+  }
+
+  /* Adds the original column header as a label using a pseudo-element */
+  .table-body td::before {
+    content: attr(data-label);
+    /* position: absolute; */
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 700;
+    /* margin-right: 15px; */
+  }
+
+  /* Removes the bottom border from the last cell in each row */
+  .table-body tr td:last-child {
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--secondary-color);
+  }
+
+  /* Resets border-radius for the stacked layout */
+  .table-body tr:last-child td:first-child,
+  .table-body tr:last-child td:last-child {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  div.form-div {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  select.input,
+  input.input {
+    flex: 1;
+    margin-top: 20px;
+    width: 100%;
+    margin-left: 0;
+    box-sizing: border-box;
+  }
+  button#update-btn {
+    margin-top: 20px;
+  }
+
+  div.side-bar {
+    display: none;
+  }
+  div.table-section, div#table-sec {
+    max-height: calc(100vh - 520px);
+    overflow-y: auto;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+  div#table-sec {
+    max-height: calc(100vh - 430px);
+  }
+  h3#heading {
+    margin-bottom: 40px;
+  }
+  a#menu-btn {
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 10px;
+    background-color: transparent;
+  }
+  div.heading-sec {
+    margin-top: 20px;
+  }
+  div.date-sec, div.day-sec {
+    display: block;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+  }
+  div.container {
+        padding: 20px;
+        box-shadow: 16px 16px 9.4px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+        background-color: #88B1BC;
+        width: 75%;
+    }
+    div.input-grp {
+        margin: 10px;
+        padding: 5px;
+    }
+    div.input-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding: 10px;
+        border-radius: 7px;
+        margin-top: 7px;
+    }
+    input.login-inp {
+      margin-top: 0;
+      margin-left: 15px;
+    }
+    button#login-btn {
+      width: 80%;
+    }
+    button#register-btn {
+      width: 80%;
+    }
+    div.content {
+      margin: 40px;
+    }
+    div.upper-section, div.date-section, div.table-container- {
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    div.table-container {
+      margin-bottom: 0;
+    }
+    div.upper-section {
+      margin-top: 20px;
+    }
+    a#menu-btn {
+      margin-top: 0;
+      margin-left: 0;
+    }
+    h2#schedule-heading {
+      font-size: 27px;
+      margin-bottom: 40px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+  a#menu-btn {
+    display: none;
+  }
+  div.side-drawer {
+    display: none;
+  }
+  div.table-container {
+    margin-top: 80px;
+  }
+  div.table-section {
+    max-height: calc(100vh - 430px);
+    overflow-y: auto;
+    font-weight: 500;
+  }
+  div#table-sec {
+    max-height: calc(100vh - 350px);
+  }
+  table.table,
+  table {
+    width: 100%;
+    font-family: "Montserrat Alternates", sans-serif;
+    border-radius: 12px;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  thead.table-head {
+    background-color: var(--secondary-color);
+    padding: 10px;
+    color: var(--primary-color);
+  }
+  thead.table-head th {
+    padding: 12px;
+    text-align: center;
+  }
+  thead.table-head th:first-child {
+    border-top-left-radius: 12px;
+  }
+  thead.table-head th:last-child {
+    border-top-right-radius: 12px;
+  }
+  tbody.table-body {
+    background-color: transparent;
+    color: var(--secondary-color);
+  }
+  tbody.table-body td {
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+  }
+  tbody.table-body tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+  }
+  tbody.table-body tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+  }
+  th,
+  td {
+    border-right: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+  }
+  th:first-child,
+  td:first-child {
+    border-left: 1px solid var(--secondary-color);
+  }
+}
+div.side-drawer {
+  background-color: var(--secondary-color);
+  padding: 70px;
+  z-index: 2;
+  position: absolute;
+  height: 100%;
+  transition: 0.3s ease-in;
+  transform: translateX(-290px);
+}
+div.side-drawer.open {
+  transform: translateX(0);
+}
+ul#slide-out li a {
+  text-decoration: none;
+  font-family: "Montserrat Alternates";
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ul#slide-out {
+  list-style: none;
+  padding: 20px;
+}
+ul#slide-out li {
+  padding-top: 60px;
+}
+img.side-icon {
+    width: 20px;
+    height: auto;
+    margin-right: 30px;
+}
+div.content {
+    height: 100vh;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resp.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/plannit-logo.ico') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
+    
+    <title>Plannit</title>
+</head>
+<body>
+    <h1 id="heading">Create account</h1>
+    <div class="container">
+        <form action="{{ url_for('register.register') }}" method="POST">
+            <div class="input-grp">
+                <label for="username" class="label">Username</label>
+                <div class="input-container">
+                    <img src="{{ url_for('static', filename='assets/icons/user-icon.png') }}" class="icons" alt="">
+                    <input type="text" id="username" name="username" class="input login-inp" placeholder="Enter your username" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="input-grp">
+                <label for="name" class="label">Name</label>
+                <div class="input-container">
+                    <input type="text" id="name" name="name" class="input login-inp" placeholder="Enter your name" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="input-grp">
+                <label for="password" class="label">Password</label>
+                <div class="input-container">
+                    <img src="{{ url_for('static', filename='assets/icons/password-icon.png') }}" class="icons" alt="">
+                    <input type="password" id="password" name="password" class="input login-inp" placeholder="Enter your password" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="input-grp">
+                <label for="conf-password" class="label">Confirm password</label>
+                <div class="input-container">
+                    <input type="password" id="conf-password" name="conf-password" class="input login-inp" placeholder="Confirm password" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="btn-section">
+                <button type="submit" class="btn" id="register-btn">Create account</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {       
+            const messages = {{ get_flashed_messages() | tojson }};
+                if (messages.length > 0) {
+                    const firstMessage = messages[0];
+                    const notyf = new Notyf();
+                    notyf.error(firstMessage);
+                }
+        });
+
+        const registerBtn = document.querySelector('#register-btn');
+        const password = document.querySelector('#password');
+        const confPassword = document.querySelector('#conf-password');
+        const name = document.querySelector('#name');
+        registerBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
+            if (password.value !== confPassword.value) {
+                const notyf = new Notyf();
+                notyf.error('Passwords do not match!');
+                return;       
+            } 
+
+            if (password.value.length < 8) {
+                const notyf = new Notyf();
+                notyf.error('Password must be at least 8 characters long!');
+                return;
+            }
+
+            sessionStorage.setItem('name', name.value);
+            document.querySelector('form').submit();
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+    "javascript.validate.enable": false,
+    "typescript.validate.enable": false,
+    "outline.problems.enabled": false,
+    "editor.unusualLineTerminators": "off",
+    "editor.codeLens": false,
+    "eslint.enable": false,
+        "js/ts.implicitProjectConfig.strictNullChecks": false,
+        "javascript.suggest.includeAutomaticOptionalChainCompletions": true,
+        "files.associations": {
+            "*.embeddedhtml": "html",
+            "*.html": "jinja-html"
+        },
+    "emmet.preferences": {
+        "files.associations": {
+            "*.html": "jinja-html"
+        },
+        "emmet.includeLanguages": {
+            "jinja-html": "html",
+        },
+    },
+    "emmet.includeLanguages": {
+        "jinja-html": "html"
+    },
+}
