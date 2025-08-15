@@ -44,10 +44,6 @@ You will need the following software installed on your system:
 ### Installation
 
 1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/Sagnik-Dey/Plannit.git](https://github.com/Sagnik-Dey/Plannit.git)
-    cd your-repo-name
-    ```
 
 2.  **Create and activate a virtual environment:**
     It's recommended to use a virtual environment to manage project dependencies.
