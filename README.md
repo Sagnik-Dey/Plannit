@@ -1,6 +1,6 @@
 # Plannit
 
-<img width="128" height="127" alt="plannit-logo (1)" src="https://github.com/user-attachments/assets/2b072cb1-062e-46ce-8d65-6c3247510113" />
+<img width="200" height="197" alt="plannit-logo" src="https://github.com/user-attachments/assets/1f7b3541-e474-4791-aada-7530a7dd97e4" />
 
 A simple yet effective web-based weekly planner application designed to help users organize their tasks and manage their schedule for the entire week. This application provides a clean, intuitive interface for adding, viewing, and deleting tasks, ensuring you stay on top of your daily responsibilities.
 
