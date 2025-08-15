@@ -85,8 +85,8 @@ You will need the following software installed on your system:
     ```
 3.  Run the project
     ```bash
-   uv run main.py
-   ```
+    uv run main.py
+    ```
 
 ---
 
