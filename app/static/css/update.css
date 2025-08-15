@@ -152,3 +152,16 @@ button#update-btn:hover {
   background: var(--tertiary-color);
   cursor: default;
 }
+
+@media screen and (max-width: 380px) {
+    body {
+        overflow-y: auto;
+        max-height: calc(100vh - 100px);
+    }
+}
+@media screen and (min-width: 380px) {
+    body {
+        overflow-y: hidden;
+        max-height: 100vh;
+    }
+}

@@ -1,4 +1,4 @@
-# My Weekly Planner
+# Plannit
 
 A simple yet effective web-based weekly planner application designed to help users organize their tasks and manage their schedule for the entire week. This application provides a clean, intuitive interface for adding, viewing, and deleting tasks, ensuring you stay on top of your daily responsibilities.
 
@@ -6,7 +6,7 @@ A simple yet effective web-based weekly planner application designed to help use
 
 ## ✨ Features
 
-* **Secure User Authentication:** Users can securely create a personal account and log in. The system uses a hashed password mechanism to protect user data.
+* **Secure User Authentication:** Users can securely create a personal account and log in.
 * **Dynamic Daily View:** The homepage automatically displays the current date and fetches the schedule specifically for that day, giving you an at-a-glance view of your most urgent tasks.
 * **Update and Manage Schedules:** A dedicated "Update" page allows users to add new time slots and tasks for any day of the week, with an easy-to-use form to specify the time range and task description.
 * **Comprehensive Weekly View:** The "View" page provides the flexibility to browse your complete schedule for any selected day of the week.
@@ -25,8 +25,8 @@ This project is built using a classic combination of backend and frontend techno
 
 * **Frontend:**
     * **HTML5:** Provides the structure and content for all web pages.
-    * **CSS3:** Styles the application, ensuring a clean, responsive, and visually appealing user interface.
-    * **JavaScript:** Adds interactivity and dynamic behavior to the pages, such as updating content without a full page refresh.
+    * **CSS3:** Styles the application.
+    * **JavaScript:** Adds interactivity and dynamic behavior to the pages.
 
 ---
 
@@ -76,6 +76,17 @@ You will need the following software installed on your system:
     flask run
     ```
     The application will now be running at `http://127.0.0.1:5000`.
+
+### If you want to setup using 'uv'
+1.  Clone the repository
+2.  Sync the requirements: 
+    ```bash
+    uv sync 
+    ```
+3.  Run the project
+    ```bash
+   uv run main.py
+   ```
 
 ---
 

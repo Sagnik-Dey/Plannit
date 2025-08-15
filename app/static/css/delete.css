@@ -131,3 +131,10 @@ button#choose-btn:hover, button#delete-btn:hover {
     border: 1px solid var(--secondary-color);
     padding: 14px 20px;
 }
+
+@media screen and (max-width: 380px) {
+    body {
+        overflow-y: auto;
+        max-height: calc(100vh - 100px);
+    }
+}
