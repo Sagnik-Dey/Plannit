@@ -45,7 +45,7 @@ You will need the following software installed on your system:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    git clone [https://github.com/Sagnik-Dey/Plannit.git](https://github.com/Sagnik-Dey/Plannit.git)
     cd your-repo-name
     ```
 
@@ -68,6 +68,20 @@ You will need the following software installed on your system:
     ```bash
     pip install -r requirements.txt
     ```
+
+4.  ### Environment Variables
+
+    This project uses environment variables for sensitive settings.
+
+    Create a `.env` file in the project root with the following contents:
+    SECRET_KEY=your_random_secret_key_here
+
+    - `SECRET_KEY` → Used by Flask for securely signing the session cookies.  
+    **Generate a random one** with:
+    ```bash
+    python -c "import secrets; print(secrets.token_hex(16))"
+    ```
+    Add the key to .env file as a value of *SECRET_KEY*
 
 4.  **Run the application:**
     Start the Flask development server.
